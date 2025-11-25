@@ -144,7 +144,6 @@ def run_stock_prediction_parallel(stocks, model, stock_list_name="NSE", timefram
 
     df = pd.DataFrame(results)
 
-    # ---------------- GUARANTEE TOP 10 BUYS & AVOIDS ----------------
     sorted_df = df.sort_values("Confidence (%)", ascending=False)
 
     buys = sorted_df.head(10).copy()
