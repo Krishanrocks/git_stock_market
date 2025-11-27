@@ -7,7 +7,10 @@ from joblib import load
 from modules.data_manager import load_local_stock
 
 # ---------------- CONFIG ----------------
-PREDICTIONS_DIR = "predictions"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # modules/
+PREDICTIONS_DIR = os.path.join(BASE_DIR, "..", "predictions")
+PREDICTIONS_DIR = os.path.abspath(PREDICTIONS_DIR)
+
 os.makedirs(PREDICTIONS_DIR, exist_ok=True)
 
 # ⚠️ FEATURES MATCH TRAINING EXACTLY
