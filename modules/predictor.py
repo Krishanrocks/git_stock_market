@@ -6,10 +6,16 @@ import concurrent.futures
 from joblib import load
 from modules.data_manager import load_local_stock
 
-# ---------------- CONFIG ----------------
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # modules/
-PREDICTIONS_DIR = os.path.join(BASE_DIR, "..", "predictions")
-PREDICTIONS_DIR = os.path.abspath(PREDICTIONS_DIR)
+# ---------------- CONFIG (STREAMLIT CLOUD SAFE) ----------------
+import tempfile
+import os
+
+# Always use writable temp directory on Streamlit Cloud
+BASE_WRITABLE_DIR = tempfile.gettempdir()
+
+PREDICTIONS_DIR = os.path.join(BASE_WRITABLE_DIR, "predictions")
+os.makedirs(PREDICTIONS_DIR, exist_ok=True)
+
 
 os.makedirs(PREDICTIONS_DIR, exist_ok=True)
 
